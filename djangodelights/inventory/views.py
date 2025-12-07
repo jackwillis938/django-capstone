@@ -6,3 +6,7 @@ from django.views.generic import ListView
 class InventoryListView(ListView):
     model = Ingredient
     template_name = "inventory/ingredients_list.html"
+
+class PurchaseListView(ListView):
+    model = Purchase
+    template_name = "purchase_list.html"
