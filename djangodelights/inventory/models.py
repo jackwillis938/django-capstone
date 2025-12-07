@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Ingredient(models.Model):
     name = models.CharField(max_length=50)
-    measurement_units = models.CharField(max_length=50)
+    measurement_unit = models.CharField(max_length=50)
     available_quantity = models.FloatField()
     price_per_unit = models.FloatField()
 

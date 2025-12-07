@@ -5,4 +5,4 @@ from django.views.generic import ListView
 
 class InventoryListView(ListView):
     model = Ingredient
-    
+    template_name = "inventory/ingredients_list.html"
