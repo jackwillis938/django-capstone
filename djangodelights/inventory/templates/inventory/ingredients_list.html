@@ -1,4 +1,9 @@
 {% extends "inventory/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'inventory/ingredients_list.css' %}">
+{% endblock %}
 
 {% block content %}
 <table>
@@ -14,6 +19,11 @@
             <td>{{ingredient.available_quantity}}</td>
             <td>{{ingredient.price_per_unit}}</td>
             <td>{{ingredient.measurement_unit}}</td>
+            <td>
+                <a href="{% url 'deleteingredient' ingredient.pk %}">
+                        <img class="icon-small"src="{% static 'inventory/trash_can.png' %}" alt="Delete">
+                </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
