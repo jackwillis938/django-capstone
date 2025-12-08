@@ -17,3 +17,14 @@ class IngredientDeleteView(DeleteView):
     model = Ingredient
     template_name = "inventory/ingredients_confirm_delete.html"
     success_url = reverse_lazy('ingredientslist')
+
+class MenuItemListView(ListView):
+    model = MenuItem
+    template_name = "inventory/menu_item_list.html"
+
+def calculate_revenue():
+    revenue = 0
+    for purchase in Purchase.objects.all():
+        revenue += purchase.menu_item.price
+    return revenue
+
