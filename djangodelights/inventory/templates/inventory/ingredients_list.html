@@ -15,7 +15,7 @@
     </tr>
     {% for ingredient in ingredient_list %}
         <tr>
-            <td>{{ingredient.name}}</td>
+            <td><a href="{% url 'ingredientsupdate' ingredient.pk %}">{{ingredient.name}}</a></td>
             <td>{{ingredient.available_quantity}}</td>
             <td>{{ingredient.price_per_unit}}</td>
             <td>{{ingredient.measurement_unit}}</td>
