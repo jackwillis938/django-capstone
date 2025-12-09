@@ -12,6 +12,7 @@
         <th>Available Quantity</th>
         <th>Price Per Unit</th>
         <th>Unit of Measurement</th>
+        <th></th>
     </tr>
     {% for ingredient in ingredient_list %}
         <tr>
@@ -27,4 +28,6 @@
         </tr>
     {% endfor %}
 </table>
+<br>
+<a href="{% url 'ingredientscreate' %}">Add a new ingredient</a>
 {% endblock %}

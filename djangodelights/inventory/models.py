@@ -56,3 +56,11 @@ def calculate_total_cost():
 
 def calculate_profit():
     return calculate_revenue() - calculate_total_cost()
+
+def auto_update_inventory(item: Purchase):
+    requirements = item.menu_item.reciperequirements_set.all()
+
+    for req in requirements:
+        ingredient = req.ingredient
+        ingredient.available_quantity -= req.quantity
+        ingredient.save()

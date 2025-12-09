@@ -1,18 +1,32 @@
 {% extends 'inventory/base.html' %}
 
 {% block content %}
-<table>
-    <tr>
-        <th>Menu Item</th>
-        <th>Price</th>
-        <th>Description</th>
-    </tr>
+<div class="menu-dashboard">
     {% for item in menuitem_list %}
-        <tr>
-            <td><a href="{% url 'menuitemupdate' item.pk %}">{{item.name}}</a></td>
-            <td>{{item.price}}</td>
-            <td>{{item.description}}</td>
-        </tr>
+    <div class="menu-card">
+        <div class="card-header">
+            <h3>
+                <a href="{% url 'menuitemupdate' item.pk %}">{{ item.name }}</a>
+                <span class="price">| ${{ item.price|floatformat:2 }}</span>
+            </h3>
+        </div>
+
+        <p class="description">{{ item.description }}</p>
+
+        <div class="requirements-section">
+            <h4>Recipe Requirements:</h4>
+            <ul>
+                {% for req in item.reciperequirements_set.all %}
+                <li>
+                    {{ req.quantity }} {{ req.ingredient.measurement_unit }} of {{ req.ingredient.name }} 
+                    <a href="{% url 'reciperequirementsupdate' req.pk %}" class="update-link">Update</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
     {% endfor %}
-</table>
+    <a href="{% url 'menuitemcreate' %}">Add a new menu item</a><br>
+    <a href="{% url 'reciperequirementscreate' %}">Add recipe requirement to existing menu item</a>
+</div>
 {% endblock %}
