@@ -1,7 +1,7 @@
 {% extends 'inventory/base.html' %}
 
 {% block content %}
-    <p id="rev">Revenue: {{revenue}}</p>
-    <p id="cost">COGS: {{cost}}</p>
-    <p id="profit"><strong>Profit: {{profit}}</strong></p>
+    <p id="rev">Revenue: ${{revenue|floatformat:2}}</p>
+    <p id="cost">COGS: ${{cost|floatformat:2}}</p>
+    <p id="profit"><strong>Profit: ${{profit|floatformat:2}}</strong></p>
 {% endblock %}
